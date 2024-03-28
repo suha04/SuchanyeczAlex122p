@@ -1,0 +1,207 @@
+:root
+{
+    --bgcolor: #232323;
+    --maincolor: #181818;
+    --fontcolor: white;
+    --fontfamily: system-ui;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background-color: var(--bgcolor);
+    height: 100vh;
+}
+
+nav
+{
+  
+  height: 100px;
+  width: 100%;
+  background-color: red;
+  z-index: 100;
+  
+}
+
+header
+{
+    padding: 20px;
+    display: flex;
+}
+
+main
+{
+    background-color: var(--maincolor);
+    margin-inline: 4rem;
+    height: 100%;
+}
+
+section
+{
+    background-color: aliceblue;
+    height: 200px;
+}
+
+/* Carousel formázás*/
+
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Ensure the container fills the entire viewport */
+  position: relative;
+  margin: auto;
+  border-radius: 20px;
+}
+
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  min-height: 600px; /* Set a minimum height to ensure touch area is sufficient */
+}
+
+.carousel-slide {
+  display: flex;
+  flex: 0 0 100%;
+  min-width: 100%; /* Ensure the slide fills the entire wrapper */
+}
+
+.carousel-slide:nth-child(1) {
+  background: #ec8f43;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FF6B6B, #ec8f43);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FF6B6B, #ec8f43);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.carousel-slide:nth-child(2) {
+  background: #00F260;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0575E6, #00F260);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+.carousel-slide:nth-child(3) {
+  background: #FC354C;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #0ABFBC, #FC354C);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #0ABFBC, #FC354C);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+@media (max-width:800px) {
+  .carousel-slide {
+    flex-direction: column;
+  }
+}
+
+.carousel-slide-half {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  font-size: clamp(18px, 2vw, 30px);
+  text-align: center;
+}
+
+.carousel-text {
+  margin: 50px;
+  color: var(--fontcolor);
+  font-family: var(--fontfamily);
+}
+
+.carousel-slide-half h1 {
+  text-transform: uppercase;
+  padding-bottom: 50px;
+}
+
+.carousel-slide-half img {
+  object-fit: contain;
+  width: 300px;
+  margin: auto;
+
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  height: 100%;
+}
+
+.carousel-control {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  font-size: 20px;
+}
+
+.carousel-counter {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.carousel-dot.active {
+  background-color: var(--fontcolor);
+}
+
+
+/* Pillár animáció formázás*/
+
+  #pillar-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    background-color: #232323;
+    margin: auto;
+    width: 600px;
+    height: 400px;
+    border-radius: 2rem;
+  }
+
+  
+
+  .pillar {
+    
+    border-radius: 1rem 1rem 0  0;
+    width: 50px;
+    background-color: #3498db;
+    transition: height 1s, transform 1s;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--fontfamily);
+    color: var(--fontcolor);
+  }
