@@ -3,51 +3,274 @@
     --bgcolor: #232323;
     --maincolor: #181818;
     --fontcolor: white;
-    --fontfamily: system-ui;
+    --regFont: "Poppins-Regular";
+    --boldFont: "Poppins-Bold";
+    --paddingAmount: 10rem;
 }
 
 *
 {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body
 {
     background-color: var(--bgcolor);
+    font-family: var(--regFont);
     height: 100vh;
 }
 
-nav
+h1, h2, h3, h4, h5, h6
 {
-  
-  height: 100px;
-  width: 100%;
-  background-color: red;
-  z-index: 100;
-  
+  font-family: var(--boldFont);
 }
 
-header
-{
-    padding: 20px;
-    display: flex;
-}
 
 main
 {
     background-color: var(--maincolor);
-    margin-inline: 4rem;
+    margin-inline: var(--paddingAmount);
     height: 100%;
 }
 
 section
 {
-    background-color: aliceblue;
+    
     height: 200px;
 }
 
+@media (max-width: 800px) {
+  main
+  {
+    margin: 0;
+  }
+}
+
+
+
+/* Navigation styles */
+
+/* Fixed navigation */
+.navigation {
+  height: 70px;
+  background: var(--bgcolor);
+  color: var(--fontcolor);
+  width: 100%;
+  z-index: 100;
+}
+
+nav {
+  float: right;
+}
+
+.nav-list
+{
+  background-color: var(--bgcolor);
+}
+
+.navigation a
+{
+  text-decoration: none;
+  color: var(--fontcolor);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  line-height: 70px;
+  color: var(--fontcolor);
+  text-align: center;
+  padding-inline: 10px;
+}
+
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
+
+/* Dropdown styles */
+nav ul li a:not(:only-child):after {
+  content: ' ▾'; /* Unicode arrow */
+}
+
+nav ul li ul {
+  position: absolute;
+  top: 100%; /* Position dropdown below parent */
+  left: 0;
+  display: none; /* Hide dropdown by default */
+  width: 100%;
+  background-color: var(--bgcolor); /* Background color for dropdown */
+  border: 1px solid #ccc; /* Border color for dropdown */
+  z-index: 1000; /* Ensure dropdown appears above other content */
+  text-align: center;
+}
+
+nav ul li:hover > ul {
+  display: block; /* Show dropdown when parent is hovered */
+}
+
+nav ul li ul li {
+  float: none; /* Reset float to stack dropdown items vertically */
+}
+
+nav ul li ul li a {
+  padding: 15px;
+  line-height: 20px;
+}
+
+/* Mobile navigation */
+.nav-mobile {
+  display: none;
+}
+
+
+
+/* Hamburger menu styles */
+#nav-toggle {
+  display: none; /* Hide the hamburger menu by default */
+}
+
+@media (max-width: 800px) {
+
+  .nav-mobile {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    height: 70px;
+    width: 70px;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 0;
+    text-align: center;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul li {
+    float: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+
+  nav ul li ul {
+    left: 50%;
+    width: 50%;
+    transform: translateX(-50%);
+    text-align: center; /* Adjust text alignment if needed */
+  }
+
+  .brand {
+    position: relative;
+    text-align: center;
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
+  }
+
+  .brand a {
+    padding-left: 0; /* Reset padding */
+  }
+
+  #nav-toggle {
+    display: block;
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+    
+  }
+
+  #nav-toggle span,
+  #nav-toggle span:before,
+  #nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 4px;
+    width: 35px;
+    background: var(--fontcolor);
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 300ms ease-in-out;
+    border-radius: 20px;
+  }
+
+  #nav-toggle span:before {
+    top: -10px;
+  }
+
+  #nav-toggle span:after {
+    bottom: -10px;
+  }
+
+  #nav-toggle.active span {
+    background-color: transparent;
+  }
+
+  #nav-toggle.active span:before,
+  #nav-toggle.active span:after {
+    top: 0;
+  }
+
+  #nav-toggle.active span:before {
+    transform: rotate(45deg);
+  }
+
+  #nav-toggle.active span:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.scrolled .navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #463f3f;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+.brand h2 {
+  float: left;
+}
+
 /* Carousel formázás*/
+
 
 .carousel-container {
   overflow: hidden;
@@ -55,7 +278,7 @@ section
   height: 100%; /* Ensure the container fills the entire viewport */
   position: relative;
   margin: auto;
-  border-radius: 20px;
+  
 }
 
 
@@ -63,13 +286,14 @@ section
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
-  min-height: 600px; /* Set a minimum height to ensure touch area is sufficient */
+  min-height: 600px;
+  
 }
 
 .carousel-slide {
   display: flex;
   flex: 0 0 100%;
-  min-width: 100%; /* Ensure the slide fills the entire wrapper */
+  padding-inline: var(--paddingAmount);
 }
 
 .carousel-slide:nth-child(1) {
@@ -102,11 +326,7 @@ section
 
 }
 
-@media (max-width:800px) {
-  .carousel-slide {
-    flex-direction: column;
-  }
-}
+
 
 .carousel-slide-half {
   display: flex;
@@ -115,13 +335,12 @@ section
   width: 100%;
   justify-content: center;
   font-size: clamp(18px, 2vw, 30px);
-  text-align: center;
 }
 
 .carousel-text {
-  margin: 50px;
+  text-align: left;
   color: var(--fontcolor);
-  font-family: var(--fontfamily);
+ 
 }
 
 .carousel-slide-half h1 {
@@ -145,6 +364,24 @@ section
   justify-content: space-between;
   transform: translateY(-50%);
   height: 100%;
+
+  display: none;
+}
+
+@media (max-width:800px) {
+  
+  .carousel-text
+  {
+    text-align: center;
+  }
+  
+  .carousel-slide {
+    flex-direction: column;
+    padding: 0;
+  }
+
+
+
 }
 
 .carousel-control {
@@ -177,6 +414,9 @@ section
 }
 
 
+
+
+
 /* Pillár animáció formázás*/
 
   #pillar-container {
@@ -202,6 +442,6 @@ section
     transition: height 1s, transform 1s;
     text-align: center;
     padding: 20px;
-    font-family: var(--fontfamily);
+    
     color: var(--fontcolor);
   }
