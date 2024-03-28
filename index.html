@@ -27,7 +27,7 @@
             </div>
             <ul class="nav-list">
               
-            <li><a href="#!">Leírás</a></li>
+            <li><a href="#alapelv">Alapelve</a></li>
               <li><a href="#!">Példák</a></li>
               <li><a href="#!">C# kód</a></li>
               <li><a href="#!">Csoporttagok Oldalai</a>
@@ -91,7 +91,25 @@
         </div>
     </header>
     <main>
-        <section class="types">
+        <section class="mainSection" id="alapelv">
+            <div>
+                <h1>A rendezés alapelve</h1>
+            <p>
+                A beillesztéses rendezés a tömb egyik részét a rendezett értékek, a másik részét pedig a még nem rendezett értékek tárolására használja fel. <br><br>
+                A 2. elemtől kezdődően minden elemet összehasonlítunk az előzővel (vagy előzőekkel) addig, amíg van mivel összehasonlítani, és amíg az előző elem nagyobb az összehasonlítandó elemnél.<br><br>
+                Ha az előző elem nagyobb, akkor felcserélődnek.
+            </p>
+            
+            </div>
+            
+            <div id="sort-container">
+                <div id="bars-container"></div>
+                <div>
+                    <button  onclick="startSorting()" id="sort-button" class="button-5" role="button">Start Insertion Sort</button>
+                </div>
+                
+            </div>
+
 
         </section>
     </main>
@@ -103,10 +121,5 @@
 
 </html>
 
-<!-- 
+ 
 
-
-<div id="pillar-container">
-                            
-                            
-</div> -->

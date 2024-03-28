@@ -13,11 +13,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
+
+
 
 body
 {
-    background-color: var(--bgcolor);
+  background-color: var(--maincolor);
     font-family: var(--regFont);
     height: 100vh;
 }
@@ -30,21 +33,40 @@ h1, h2, h3, h4, h5, h6
 
 main
 {
-    background-color: var(--maincolor);
-    margin-inline: var(--paddingAmount);
+    margin: var(--paddingAmount);
     height: 100%;
 }
 
-section
+.mainSection
 {
-    
-    height: 200px;
+    color: var(--fontcolor);
+    display: flex;
 }
+
+.mainSection h1
+{
+  font-size: 50px;
+  text-transform: uppercase;
+}
+
+.mainSection p
+{
+  font-size: 25px;
+}
+
+.mainSection div
+{
+  flex-basis: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media (max-width: 800px) {
   main
   {
-    margin: 0;
+    margin: 20px;
+    text-align: center;
   }
 }
 
@@ -403,7 +425,7 @@ nav ul li ul li a {
 .carousel-dot {
   width: 10px;
   height: 10px;
-  background-color: #bbb;
+  background-color: var(--bgcolor);
   border-radius: 50%;
   display: inline-block;
   margin: 0 5px;
@@ -417,31 +439,88 @@ nav ul li ul li a {
 
 
 
-/* Pillár animáció formázás*/
+/* Rendezés animáció */
 
-  #pillar-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 10px;
-    background-color: #232323;
-    margin: auto;
-    width: 600px;
-    height: 400px;
-    border-radius: 2rem;
-  }
-
+#sort-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bgcolor);
+  padding: 20px;
+  border-radius: 2rem;
+  justify-content: space-evenly;
+  gap: 25px;
+  margin-top: 80px;
+}
+#bars-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Align bars to the bottom of the container */
+  width: 100%;
+  gap: 10px;
+}
+.bar {
+  background: #3498db;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 10px 10px 0 0;
+  text-align: center;
   
+}
 
-  .pillar {
-    
-    border-radius: 1rem 1rem 0  0;
-    width: 50px;
-    background-color: #3498db;
-    transition: height 1s, transform 1s;
-    text-align: center;
-    padding: 20px;
-    
-    color: var(--fontcolor);
+@media (max-width: 800px) {
+  .mainSection
+  {
+    flex-direction: column;
   }
+
+  #bars-container
+  {
+    width: 100%;
+  }
+}
+
+
+/* Gomb */
+
+.button-5 {
+  align-items: center;
+  background-color: #2c3e50;
+  border: 0;
+  border-radius: .25rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+}
+
+.button-5:hover,
+.button-5:focus {
+  background-color: #3498db;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  background-color: #2c3e50;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+#sort-button:disabled {
+  background-color: #7d93ac;
+  cursor: not-allowed;
+}

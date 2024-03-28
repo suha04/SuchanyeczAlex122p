@@ -1,63 +1,84 @@
 //nav funkció
 
 document.addEventListener('DOMContentLoaded', function() {
-    const navigation = document.querySelector('.navigation');
-    const navList = document.querySelector('.nav-list');
-    const navToggle = document.getElementById('nav-toggle');
-  
-    // Function to handle scroll event
-    function handleScroll() {
-        if (window.scrollY > 0) {
+  const navigation = document.querySelector('.navigation');
+  const navList = document.querySelector('.nav-list');
+  const navToggle = document.getElementById('nav-toggle');
+  let isNavigationFixed = false; // Flag to track whether navigation is fixed
+
+  // Function to handle scroll event
+  function handleScroll() {
+      if (window.scrollY > 0) {
           navigation.style.position = 'fixed';
-        } else {
+          isNavigationFixed = true;
+      } else {
           navigation.style.position = 'static';
-        }
+          isNavigationFixed = false;
       }
-      
-  
-    // Initial call to handle scroll to set initial styles
-    handleScroll();
-  
-    // Add scroll event listener to window
-    window.addEventListener('scroll', handleScroll);
-  
-    // Other navigation menu functionality
-    // If a link has a dropdown, add sub menu toggle
-    document.querySelectorAll('nav ul li a:not(:only-child)').forEach(function(link) {
+  }
+
+  // Initial call to handle scroll to set initial styles
+  handleScroll();
+
+  // Add scroll event listener to window
+  window.addEventListener('scroll', handleScroll);
+
+  // Function to handle navigation link clicks
+  function handleNavLinkClick(event) {
+      const targetId = this.getAttribute('href').substring(1); // Get target ID from href
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+          event.preventDefault(); // Prevent default anchor behavior
+          const targetRect = targetElement.getBoundingClientRect(); // Get target element's position relative to viewport
+          let offset = targetRect.top + window.pageYOffset - navigation.clientHeight; // Calculate offset relative to document
+          if (!isNavigationFixed) {
+              offset -= navigation.clientHeight; // Adjust offset if navigation is static
+          }
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+  }
+
+  // Add click event listener to navigation links
+  document.querySelectorAll('nav ul li a').forEach(function(link) {
+      link.addEventListener('click', handleNavLinkClick);
+  });
+
+  // Other navigation menu functionality
+  // If a link has a dropdown, add sub menu toggle
+  document.querySelectorAll('nav ul li a:not(:only-child)').forEach(function(link) {
       link.addEventListener('click', function(e) {
-        var dropdown = this.nextElementSibling;
-        if (dropdown) {
-          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-          // Close one dropdown when selecting another
-          document.querySelectorAll('.nav-dropdown').forEach(function(item) {
-            if (item !== dropdown) {
-              item.style.display = 'none';
-            }
-          });
-          e.stopPropagation();
-        }
+          var dropdown = this.nextElementSibling;
+          if (dropdown) {
+              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+              // Close one dropdown when selecting another
+              document.querySelectorAll('.nav-dropdown').forEach(function(item) {
+                  if (item !== dropdown) {
+                      item.style.display = 'none';
+                  }
+              });
+              e.stopPropagation();
+          }
       });
-    });
-  
-    // Clicking away from dropdown will remove the dropdown class
-    document.addEventListener('click', function() {
+  });
+
+  // Clicking away from dropdown will remove the dropdown class
+  document.addEventListener('click', function() {
       document.querySelectorAll('.nav-dropdown').forEach(function(item) {
-        item.style.display = 'none';
+          item.style.display = 'none';
       });
-    });
-  
-    // Toggle open and close nav styles on click
-    document.getElementById('nav-toggle').addEventListener('click', function() {
+  });
+
+  // Toggle open and close nav styles on click
+  document.getElementById('nav-toggle').addEventListener('click', function() {
       var navUl = document.querySelector('nav ul');
       navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
-    });
-  
-    // Hamburger to X toggle
-    document.getElementById('nav-toggle').addEventListener('click', function() {
-      this.classList.toggle('active');
-    });
   });
-  
+
+  // Hamburger to X toggle
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+  });
+});
 
 
 
@@ -138,38 +159,76 @@ const intervalId = setInterval(nextSlide, 5000);
 
 
 
-//Pillár funkció
+// Rendezés funkció
 
-const pillarcontainer = document.getElementById('pillar-container');
+let initialNumbers = [];
 
-function generateRandomHeight(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+// Function to generate random numbers for bars
+function generateRandomNumbers(numBars, minHeight, maxHeight) {
+    let numbers = [];
+    for (let i = 0; i < numBars; i++) {
+        numbers.push(Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight);
+    }
+    return numbers;
 }
 
-function createPillar(height) {
-    const pillar = document.createElement('div');
-    pillar.classList.add('pillar');
-    pillar.style.height = `${height}px`;
-    pillar.innerText = height; // Show height inside the pillar
-    pillarcontainer.appendChild(pillar);
-
-}
-
-
-// Generate and append pillars with random heights
-for (let i = 0; i < 5; i++) { // Generating 5 pillars
-    const randomHeight = generateRandomHeight(150, 300);
-    createPillar(randomHeight);
-}
-
-setTimeout(() => {
-    const pillars = document.querySelectorAll('.pillar');
-    const heights = Array.from(pillars).map(pillar => parseInt(pillar.style.height));
-    const sortedHeights = heights.slice().sort((a, b) => a - b);
-
-    // Sort and update pillar heights
-    pillars.forEach((pillar, index) => {
-        pillar.style.height = `${sortedHeights[index]}px`;
-        pillar.innerText = sortedHeights[index]; // Update text inside the pillar with sorted height
+// Function to display bars
+function displayBars(arr) {
+    const barsContainer = document.getElementById("bars-container");
+    barsContainer.innerHTML = "";
+    arr.forEach((value, index) => {
+        const bar = document.createElement("div");
+        bar.classList.add("bar");
+        bar.style.height = value * 5 + "px";
+        bar.innerHTML ='<h3>' + value + '</h3>';
+        barsContainer.appendChild(bar);
     });
-}, 500); // Delay for 2 seconds before sorting animation
+}
+
+// Insertion Sort Algorithm
+async function insertionSort(arr) {
+    const len = arr.length;
+    for (let i = 1; i < len; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+            await sleep(150); // Delay for visualization
+            displayBars([...arr]); // Pass a copy of the array
+        }
+        arr[j + 1] = key;
+    }
+    document.getElementById("sort-button").innerText = "Restart";
+    document.getElementById("sort-button").disabled = false;
+}
+
+// Helper function for delaying
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Function to start sorting
+function startSorting() {
+    const sortButton = document.getElementById("sort-button");
+    if (sortButton.innerText === "Start Insertion Sort") {
+        sortButton.innerText = "Sorting...";
+        sortButton.disabled = true;
+
+        // Use the initial numbers for sorting
+        insertionSort([...initialNumbers]); // Pass a copy of the array
+    } else {
+        // Restart button functionality
+        sortButton.innerText = "Sorting...";
+        sortButton.disabled = true;
+        displayBars([...initialNumbers]); // Pass a copy of the array
+        insertionSort([...initialNumbers]); // Pass a copy of the array
+    }
+}
+
+// Initialize bars
+const numBars = 10; // Change this value for more or less bars
+const minHeight = 10; // Minimum height of bars
+const maxHeight = 50; // Change this value to adjust maximum height of bars
+initialNumbers = generateRandomNumbers(numBars, minHeight, maxHeight);
+displayBars(initialNumbers);
