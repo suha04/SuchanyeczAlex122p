@@ -81,9 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 //carousel funkciók
-
 const carouselWrapper = document.querySelector('.carousel-wrapper');
 const slides = document.querySelectorAll('.carousel-slide');
 const totalSlides = slides.length;
@@ -92,12 +90,14 @@ const slideWidth = slides[0].clientWidth;
 let touchStartX = 0;
 let touchEndX = 0;
 const swipeThreshold = 50; // Adjust the threshold as needed
+let intervalId;
 
 function goToSlide(slideIndex) {
     if (slideIndex < 0 || slideIndex >= totalSlides) return;
     currentSlide = slideIndex;
     carouselWrapper.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
     updateCounter(); // Update carousel counter dots
+    resetInterval(); // Reset interval on slide change
 }
 
 function nextSlide() {
@@ -142,9 +142,14 @@ function updateCounter() {
     for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('span');
         dot.classList.add('carousel-dot');
+        dot.dataset.index = i; // Set custom data attribute to store index
         if (i === currentSlide) {
             dot.classList.add('active');
         }
+        dot.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            goToSlide(index);
+        });
         counterContainer.appendChild(dot);
     }
 }
@@ -152,11 +157,14 @@ function updateCounter() {
 // Initial update of carousel counter dots
 updateCounter();
 
+// Function to reset interval
+function resetInterval() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, 3000);
+}
 
-const intervalId = setInterval(nextSlide, 5000);
-
-
-
+// Set interval for automatic sliding
+intervalId = setInterval(nextSlide, 3000);
 
 
 // Rendezés funkció
@@ -199,7 +207,7 @@ async function insertionSort(arr) {
         }
         arr[j + 1] = key;
     }
-    document.getElementById("sort-button").innerText = "Restart";
+    document.getElementById("sort-button").innerText = "Újra";
     document.getElementById("sort-button").disabled = false;
 }
 
@@ -211,15 +219,15 @@ function sleep(ms) {
 // Function to start sorting
 function startSorting() {
     const sortButton = document.getElementById("sort-button");
-    if (sortButton.innerText === "Start Insertion Sort") {
-        sortButton.innerText = "Sorting...";
+    if (sortButton.innerText === "Animáció indítása") {
+        sortButton.innerText = "Rendezés...";
         sortButton.disabled = true;
 
         // Use the initial numbers for sorting
         insertionSort([...initialNumbers]); // Pass a copy of the array
     } else {
         // Restart button functionality
-        sortButton.innerText = "Sorting...";
+        sortButton.innerText = "Rendezés...";
         sortButton.disabled = true;
         displayBars([...initialNumbers]); // Pass a copy of the array
         insertionSort([...initialNumbers]); // Pass a copy of the array

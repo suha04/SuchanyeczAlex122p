@@ -21,8 +21,9 @@
 body
 {
   background-color: var(--maincolor);
-    font-family: var(--regFont);
-    height: 100vh;
+  font-family: var(--regFont);
+  height: 100vh;
+  font-size: clamp(16px, 2.5vw, 25px);
 }
 
 h1, h2, h3, h4, h5, h6
@@ -31,43 +32,85 @@ h1, h2, h3, h4, h5, h6
 }
 
 
+/* Main formázás*/
+
 main
 {
     margin: var(--paddingAmount);
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
 }
 
-.mainSection
+.mainSection 
 {
-    color: var(--fontcolor);
-    display: flex;
+  color: var(--fontcolor);
+  
+  background-color: var(--bgcolor);
+
+  border-radius: 10px;
+  padding: 20px;
+  
 }
+
+.sectionContent
+{
+  
+  display: flex;
+  gap: calc((var(--paddingAmount)/4));
+  margin-block: calc(var(--paddingAmount) / 2);
+  
+}
+
 
 .mainSection h1
 {
   font-size: 50px;
   text-transform: uppercase;
+  flex: none;
 }
 
-.mainSection p
+.sectionImg
 {
-  font-size: 25px;
-}
-
-.mainSection div
-{
-  flex-basis: 50%;
-  justify-content: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  background-color: var(--maincolor);
+  padding: 20px;
+  border-radius: 2rem;
 }
 
+.sectionImg img
+{
+  width: 100%;
+  border-radius: 10px;
+}
 
 @media (max-width: 800px) {
   main
   {
-    margin: 20px;
+    margin: 0;
     text-align: center;
   }
+
+  .sectionContent
+  {
+    flex-direction: column;
+  }
+
+  .mainSection
+  {
+    border-radius: 0;
+  }
+
+}
+
+ol {
+  padding: 20px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 
@@ -76,15 +119,36 @@ main
 
 /* Fixed navigation */
 .navigation {
-  height: 70px;
   background: var(--bgcolor);
   color: var(--fontcolor);
   width: 100%;
   z-index: 100;
+  box-shadow: 1px 1px 100px 1px black;
 }
 
 nav {
-  float: right;
+  
+  background-color: var(--bgcolor);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+.brand {
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  line-height: 70px;
+  text-transform: uppercase;
+  color: #463f3f;
+  text-decoration: none;
+  
 }
 
 .nav-list
@@ -178,7 +242,6 @@ nav ul li ul li a {
 
   nav {
     width: 100%;
-    padding: 70px 0 0;
     text-align: center;
   }
 
@@ -204,9 +267,9 @@ nav ul li ul li a {
 
   .brand {
     position: relative;
-    text-align: center;
-    padding: 0; /* Reset padding */
+    padding-left: 20px; /* Reset padding */
     margin: 0; /* Reset margin */
+    float: left;
   }
 
   .brand a {
@@ -272,24 +335,8 @@ nav ul li ul li a {
   z-index: 1000;
 }
 
-.nav-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
 
-.brand {
-  position: absolute;
-  line-height: 70px;
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: #463f3f;
-  text-decoration: none;
-  padding-left: 20px;
-}
 
-.brand h2 {
-  float: left;
-}
 
 /* Carousel formázás*/
 
@@ -339,12 +386,9 @@ nav ul li ul li a {
 
 
 .carousel-slide:nth-child(3) {
-  background: #FC354C;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #0ABFBC, #FC354C);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #0ABFBC, #FC354C);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #EB3349;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F45C43, #EB3349);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -377,18 +421,7 @@ nav ul li ul li a {
 
 }
 
-.carousel-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  height: 100%;
 
-  display: none;
-}
 
 @media (max-width:800px) {
   
@@ -402,24 +435,39 @@ nav ul li ul li a {
     padding: 0;
   }
 
+  .carousel-slide-half img
+  {
+    width: 200px;
+    margin: 0 auto auto;
+  }
 
+}
 
+.carousel-controls
+{
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
+  
+  
 }
 
 .carousel-control {
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.5);
-  color: white;
-  padding: 5px 10px;
+  background: transparent;
+  color: var(--bgcolor);
   border: none;
-  font-size: 20px;
+  font-size: 50px;
 }
 
-.carousel-counter {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+.carousel-control:active
+{
+  color: white;
+  scale: 2;
 }
 
 .carousel-dot {
@@ -442,15 +490,9 @@ nav ul li ul li a {
 /* Rendezés animáció */
 
 #sort-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--bgcolor);
-  padding: 20px;
-  border-radius: 2rem;
+  
   justify-content: space-evenly;
   gap: 25px;
-  margin-top: 80px;
 }
 #bars-container {
   display: flex;
@@ -461,10 +503,11 @@ nav ul li ul li a {
 }
 .bar {
   background: #3498db;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to bottom, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 10px 10px 0 0;
   text-align: center;
+  width: 50px;
   
 }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    
+
     <link rel="icon" href="assets/img/icon.png">
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -17,30 +17,32 @@
 <body>
 
     <section class="navigation">
-        <div class="nav-container">
-          <div class="brand">
-            <a href="#"><h2>Beillesztéses Rendezés</h2></a>
-          </div>
-          <nav>
-            <div class="nav-mobile">
-              <a id="nav-toggle" href="#!"><span></span></a>
-            </div>
-            <ul class="nav-list">
-              
-            <li><a href="#alapelv">Alapelve</a></li>
-              <li><a href="#!">Példák</a></li>
-              <li><a href="#!">C# kód</a></li>
-              <li><a href="#!">Csoporttagok Oldalai</a>
-                <ul class="nav-dropdown">
-                  <li><a href="#aoldal">"A" Oldal</a></li>
-                  <li><a href="#coldal">"C" oldal</a></li>
-                </ul>
-              </li>
-              
-            </ul>
-          </nav>
+        <div class="brand">
+            <a href="#">
+                <h2>Beillesztéses Rendezés</h2>
+            </a>
         </div>
-      </section>
+        <div class="nav-container">
+            <nav>
+                <div class="nav-mobile">
+                    <a id="nav-toggle" href="#!"><span></span></a>
+                </div>
+                <ul class="nav-list">
+
+                    <li><a href="#alapelv">Alapelve</a></li>
+                    <li><a href="#algoritmus">Algoritmus</a></li>
+                    <li><a href="#!">C# kód</a></li>
+                    <li><a href="#!">Csoporttagok Oldalai</a>
+                        <ul class="nav-dropdown">
+                            <li><a href="#aoldal">"A" Oldal</a></li>
+                            <li><a href="#coldal">"C" oldal</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </section>
 
     <header>
         <div class="carousel-container">
@@ -70,47 +72,85 @@
                 <div class="carousel-slide">
                     <div class="carousel-slide-half left">
                         <div class="carousel-text">
-                            <h1>Kvízjáték</h1>
-                            <p>Úgy érzed elsajátítottad a tudást? Tedd magad próbára!</p>
+                            <h1>Csoportmunka</h1>
+                            <p>Nézd meg csoporttársaim munkáit is! <br> (Elérhető a navigációs sávon)</p>
                         </div>
                     </div>
                     <div class="carousel-slide-half right">
-                        <img src="assets/img/test.png" alt="">
+                        <img src="assets/img/team.png" alt="">
                     </div>
                 </div>
             </div>
             <div class="carousel-controls">
                 <button class="carousel-control" onclick="prevSlide()">&#10094;</button>
-                
-                
+
+                <div class="carousel-counter"></div>
 
                 <button class="carousel-control" onclick="nextSlide()">&#10095;</button>
-                
             </div>
-            <div class="carousel-counter"></div>
+
+
+
         </div>
     </header>
     <main>
         <section class="mainSection" id="alapelv">
+
+            <h1>A rendezés alapelve</h1>
+            
+            
+            <div class="sectionContent">
+
             <div>
-                <h1>A rendezés alapelve</h1>
-            <p>
-                A beillesztéses rendezés a tömb egyik részét a rendezett értékek, a másik részét pedig a még nem rendezett értékek tárolására használja fel. <br><br>
-                A 2. elemtől kezdődően minden elemet összehasonlítunk az előzővel (vagy előzőekkel) addig, amíg van mivel összehasonlítani, és amíg az előző elem nagyobb az összehasonlítandó elemnél.<br><br>
-                Ha az előző elem nagyobb, akkor felcserélődnek.
-            </p>
-            
+                
+                <p>
+                    A beillesztéses rendezés a tömb egyik részét a rendezett értékek, a másik részét pedig a még nem
+                    rendezett értékek tárolására használja fel. <br><br>
+                    A 2. elemtől kezdődően minden elemet összehasonlítunk az előzővel (vagy előzőekkel) addig, amíg van
+                    mivel összehasonlítani, és amíg az előző elem nagyobb az összehasonlítandó elemnél.<br><br>
+                    Ha az előző elem nagyobb, akkor felcserélődnek.
+                </p>
+
             </div>
-            
-            <div id="sort-container">
+
+            <div id="sort-container" class="sectionImg">
                 <div id="bars-container"></div>
                 <div>
-                    <button  onclick="startSorting()" id="sort-button" class="button-5" role="button">Start Insertion Sort</button>
+                    <button onclick="startSorting()" id="sort-button" class="button-5" role="button">Animáció
+                        indítása</button>
                 </div>
-                
+
+            </div>
+        </div>
+
+        </section>
+
+        <section class="mainSection" id="algoritmus">
+            
+            <h1>Az Algoritmus</h1>
+             
+            <div class="sectionContent">
+
+            
+            <div class="sectionImg">
+                <img src="assets/img/Csharp.png" alt="" srcset="">
             </div>
 
+            <div>
+                
+                <p>
+                    Az alábbi képen egy 5 elemű tömb látható.
+                    <br>Felépítése:
+                <ol>
+                    <li>Elem(ek) amit összehasonlítunk az előző elemmel (elemekkel).</li>
+                    <li>Amivel hasonlítunk, annak az indexe 1-el kisebb.</li>
+                    <li>Amíg van mivel összehasonlítani és az előző elem nagyobb az összehasonlítandó elemnél,</li>
+                    <li>Addig az összehasonlítandó elemet cseréljük az előző elemmel</li>
+                </ol>
+                </p>
 
+            </div>
+        </div>
         </section>
     </main>
     <footer>
@@ -120,6 +160,3 @@
 </body>
 
 </html>
-
- 
-
