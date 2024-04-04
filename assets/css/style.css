@@ -581,6 +581,7 @@ body.modal-open {
 .sectionImg:has(#input) {
   width: 100%;
   overflow-x: auto;
+  
 }
 
 #input {
@@ -608,6 +609,7 @@ body.modal-open {
   align-items: center;
   justify-content: center;
   color: white;
+  z-index: 2;
 }
 
 @media(max-width: 800px) {

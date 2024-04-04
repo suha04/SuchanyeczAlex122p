@@ -48,15 +48,21 @@ window.addEventListener('click', (event) => {
 //c# kód bemásolása szövegként
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Fetching the .cs file
-    fetch('../assets/csharp/programkodC.cs')
-      .then(response => response.text())
-      .then(data => {
-        // Injecting the content into the HTML div
-        document.getElementById('input').textContent = data;
-      })
-      .catch(error => console.error('Error fetching .cs file:', error));
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './assets/csharp/programkodC.cs', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          // Injecting the content into the HTML div
+          document.getElementById('input').textContent = xhr.responseText;
+        } else {
+          console.error('Error fetching .cs file:', xhr.statusText);
+        }
+      }
+    };
+    xhr.send();
   });
+
 
 //c# kód futtatás szimuláció (JS alternatíva)
 function main() {
