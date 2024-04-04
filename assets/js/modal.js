@@ -166,15 +166,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const textContainer = document.getElementById('input');
     const copyButton = document.getElementById('masolas');
   
-    // Fetching the .cs file
-    fetch('../assets/csharp/programkodC.cs')
-      .then(response => response.text())
-      .then(data => {
-        // Injecting the content into the HTML div
-        textContainer.textContent = data;
-      })
-      .catch(error => console.error('Error fetching .cs file:', error));
-  
     // Copy text to clipboard when button is clicked
     copyButton.textContent = 'Másolás';
     copyButton.addEventListener('click', function() {
