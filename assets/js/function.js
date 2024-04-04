@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const navigation = document.querySelector('.navigation');
     const navList = document.querySelector('.nav-list');
     const navToggle = document.getElementById('nav-toggle');
+    const navUnderline =document.getElementById('navUnderline');
+
     let isNavigationFixed = false; // Flag to track whether navigation is fixed
 
     // Function to handle scroll event
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleNavLinkClick(event) {
         const targetId = this.getAttribute('href').substring(1); // Get target ID from href
         const targetElement = document.getElementById(targetId);
+        
         if (targetElement) {
             event.preventDefault(); // Prevent default anchor behavior
             const targetRect = targetElement.getBoundingClientRect(); // Get target element's position relative to viewport
@@ -35,7 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 offset -= navigation.clientHeight; // Adjust offset if navigation is static
             }
             window.scrollTo({ top: offset, behavior: 'smooth' });
+            
         }
+        
     }
 
     // Add click event listener to navigation links

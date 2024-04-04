@@ -1,8 +1,10 @@
 :root
 {
-    --bgcolor: #232323;
-    --maincolor: #181818;
-    --fontcolor: white;
+    --orange: #fb5958;
+    --dark2: #232323;
+    --dark1: #181818;
+    --light1: white;
+    --light2: grey;
     --regFont: "Poppins-Regular";
     --boldFont: "Poppins-Bold";
     --paddingAmount: 10rem;
@@ -21,7 +23,7 @@
 
 body
 {
-  background-color: var(--maincolor);
+  background-color: var(--dark1);
   font-family: var(--regFont);
   height: 100vh;
   font-size: var(--bodyFontSize);
@@ -45,9 +47,9 @@ main
 
 .mainSection 
 {
-  color: var(--fontcolor);
+  color: var(--light1);
   
-  background-color: var(--bgcolor);
+  background-color: var(--dark2);
 
   border-radius: 10px;
   padding: 20px;
@@ -77,7 +79,7 @@ main
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--maincolor);
+  background-color: var(--dark1);
   padding: 20px;
   border-radius: 2rem;
 }
@@ -91,7 +93,7 @@ main
 @media (max-width: 800px) {
   main
   {
-    margin: 0;
+    margin:0;
     text-align: center;
   }
 
@@ -114,14 +116,12 @@ ol {
   gap: 20px;
 }
 
-
-
 /* Navigation styles */
 
 /* Fixed navigation */
 .navigation {
-  background: var(--bgcolor);
-  color: var(--fontcolor);
+  background: var(--dark2);
+  color: var(--light1);
   width: 100%;
   z-index: 100;
   box-shadow: 1px 1px 100px 1px black;
@@ -129,7 +129,7 @@ ol {
 
 nav {
   
-  background-color: var(--bgcolor);
+  background-color: var(--dark2);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -147,20 +147,21 @@ nav {
   justify-content: center;
   line-height: 70px;
   text-transform: uppercase;
-  color: #463f3f;
   text-decoration: none;
   
 }
 
+
+
 .nav-list
 {
-  background-color: var(--bgcolor);
+  background-color: var(--dark2);
 }
 
 .navigation a
 {
   text-decoration: none;
-  color: var(--fontcolor);
+  color: var(--light1);
 }
 
 nav ul {
@@ -175,21 +176,42 @@ nav ul li {
 }
 
 nav ul li a {
+  position: relative;
   display: block;
   line-height: 70px;
-  color: var(--fontcolor);
+  color: var(--light1);
   text-align: center;
   padding-inline: 10px;
+  
+}
+
+#navUnderline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  height: 3px;
+  border-radius:  0rem 0rem 2rem 2rem;
+  background-color: var(--light1);
+  transform: scaleX(0);
+ 
+  transition: transform 0.3s ease-in-out;
+  
+}
+
+#navUnderline:focus::after {
+  transform: scaleX(1);
 }
 
 nav ul li a:hover:not(:has(#cskod)) {
   background: #f2f2f2;
-  color: #fb5958;
+  color: var(--orange);
 }
 
 #cskod
 {
-  background: #fb5958;
+  background: var(--orange);
   border-radius: 2rem;
   padding: 10px;
 }
@@ -197,7 +219,7 @@ nav ul li a:hover:not(:has(#cskod)) {
 #cskod:hover
 {
   background: #f2f2f2;
-  color: #fb5958;
+  color: var(--orange);
 }
 
 
@@ -213,7 +235,7 @@ nav ul li ul {
   left: 0;
   display: none; /* Hide dropdown by default */
   width: 100%;
-  background-color: var(--bgcolor); /* Background color for dropdown */
+  background-color: var(--dark2); /* Background color for dropdown */
   border: 1px solid #ccc; /* Border color for dropdown */
   z-index: 1000; /* Ensure dropdown appears above other content */
   text-align: center;
@@ -311,7 +333,7 @@ nav ul li ul li a {
     border-radius: 1px;
     height: 4px;
     width: 35px;
-    background: var(--fontcolor);
+    background: var(--light1);
     position: absolute;
     display: block;
     content: '';
@@ -423,7 +445,7 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 
 .carousel-text {
   text-align: left;
-  color: var(--fontcolor);
+  color: var(--light1);
  
 }
 
@@ -477,30 +499,28 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 .carousel-control {
   cursor: pointer;
   background: transparent;
-  color: var(--bgcolor);
+  color: var(--dark2);
   border: none;
   font-size: 50px;
 }
 
 .carousel-control:active
 {
-  color: white;
-  scale: 2;
+  color: var(--light1);
 }
 
 .carousel-dot {
   width: 10px;
   height: 10px;
-  background-color: var(--bgcolor);
+  background-color: var(--dark2);
   border-radius: 50%;
   display: inline-block;
   margin: 0 5px;
 }
 
 .carousel-dot.active {
-  background-color: var(--fontcolor);
+  background-color: var(--light1);
 }
-
 
 
 /* Modal formázás */
@@ -523,7 +543,7 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 
 /* Styles for the pop-up content */
 .modal-content {
-  background-color: var(--bgcolor);
+  background-color: var(--dark2);
   padding: 2rem;
   margin: 10% 10%;
   border: 1px solid #888;
@@ -550,7 +570,7 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
   width: 50px;
   font-weight: bold;
   cursor: pointer;
-  color: var(--fontcolor);
+  color: var(--light1);
 }
 
 /* Amikor a modal nyitva, nincs görgetés */
@@ -564,6 +584,8 @@ body.modal-open {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 0;
 }
 
 #kodResz .sectionImg
@@ -597,7 +619,7 @@ body.modal-open {
 
 #masolas
 {
-  background-color: grey;
+  background-color: var(--light2);
   border-bottom-left-radius: 2rem;
   padding: 20px;
   text-transform: uppercase;
@@ -608,7 +630,7 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--light1);
   z-index: 2;
 }
 
@@ -619,7 +641,7 @@ body.modal-open {
   }
 
   .modal-content {
-    background-color: var(--bgcolor);
+    background-color: var(--dark2);
     padding: 1rem;
     margin: 5% 5%;
     border: 1px solid #888;
@@ -709,4 +731,46 @@ body.modal-open {
 #sort-button:disabled {
   background-color: #7d93ac;
   cursor: not-allowed;
+}
+
+/* Footer formázás */
+
+footer {
+  background-color: var(--dark2);
+  margin-top: calc(var(--paddingAmount)/2);
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(var(--paddingAmount)/10);
+  color: var(--light1);
+  gap: calc(var(--paddingAmount)/4);
+}
+
+#footerContent {
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#footerTitle {
+  font-family: "Pacifico";
+}
+
+#footerCopyright {
+  background-color: var(--dark1);
+  text-align: center;
+  margin: calc(var(--paddingAmount)/10);
+  padding: calc(var(--paddingAmount)/10);
+  font-size: calc(var(--bodyFontSize)/1.5);
+  border-radius: 2rem;
+}
+
+#copyrightText,
+#designerLink {
+  display: inline-block; /* Display as inline-block to allow them to be next to each other */
+}
+
+#designer {
+  text-transform: uppercase;
 }

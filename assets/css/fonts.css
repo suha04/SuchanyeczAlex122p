@@ -8,3 +8,8 @@
     font-family: "Poppins-Bold";
     src: url("../fonts/Poppins-Bold.ttf");
 }
+
+@font-face {
+    font-family: "Pacifico";
+    src: url("../fonts/Pacifico-Regular.ttf");
+}
