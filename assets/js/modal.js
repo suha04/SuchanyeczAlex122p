@@ -42,26 +42,68 @@ window.addEventListener('click', (event) => {
 });
 
 
-
 //c# kód funkciók
+
+
+//c# kód szöveg
+
+var cSharpSzoveg = 
+`using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] oldalszamok = new int[9];
+        Random rnd = new Random();
+
+        // Generáljuk a véletlen oldalszámokat és tároljuk őket a tömbben
+        for (int i = 0; i < oldalszamok.Length; i++)
+        {
+            oldalszamok[i] = rnd.Next(100, 201); // 100-200 közötti véletlen szám generálása
+        }
+
+        Console.WriteLine("Eredeti sorrendben:");
+        PrintArray(oldalszamok);
+
+        InsertionSort(oldalszamok);
+
+        Console.WriteLine("\nRendezetten:");
+        PrintArray(oldalszamok);
+    }
+
+    // Beszúrásos rendezés algoritmus implementációja
+    static void InsertionSort(int[] arr)
+    {
+        for (int i = 1; i < arr.Length; i++)
+        {
+            int current = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > current)
+            {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = current;
+        }
+    }
+
+    // Tömb kiíratása
+    static void PrintArray(int[] arr)
+    {
+        foreach (var item in arr)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}`;
 
 //c# kód bemásolása szövegként
 
-document.addEventListener("DOMContentLoaded", function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', './assets/csharp/programkodC.cs', true);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          // Injecting the content into the HTML div
-          document.getElementById('input').textContent = xhr.responseText;
-        } else {
-          console.error('Error fetching .cs file:', xhr.statusText);
-        }
-      }
-    };
-    xhr.send();
-  });
+document.getElementById('input').textContent = cSharpSzoveg;
 
 
 //c# kód futtatás szimuláció (JS alternatíva)
