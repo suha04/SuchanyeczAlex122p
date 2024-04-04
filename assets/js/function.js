@@ -1,83 +1,83 @@
 //nav funkció
 
-document.addEventListener('DOMContentLoaded', function() {
-  const navigation = document.querySelector('.navigation');
-  const navList = document.querySelector('.nav-list');
-  const navToggle = document.getElementById('nav-toggle');
-  let isNavigationFixed = false; // Flag to track whether navigation is fixed
+document.addEventListener('DOMContentLoaded', function () {
+    const navigation = document.querySelector('.navigation');
+    const navList = document.querySelector('.nav-list');
+    const navToggle = document.getElementById('nav-toggle');
+    let isNavigationFixed = false; // Flag to track whether navigation is fixed
 
-  // Function to handle scroll event
-  function handleScroll() {
-      if (window.scrollY > 0) {
-          navigation.style.position = 'fixed';
-          isNavigationFixed = true;
-      } else {
-          navigation.style.position = 'static';
-          isNavigationFixed = false;
-      }
-  }
+    // Function to handle scroll event
+    function handleScroll() {
+        if (window.scrollY > 0) {
+            navigation.style.position = 'fixed';
+            isNavigationFixed = true;
+        } else {
+            navigation.style.position = 'static';
+            isNavigationFixed = false;
+        }
+    }
 
-  // Initial call to handle scroll to set initial styles
-  handleScroll();
+    // Initial call to handle scroll to set initial styles
+    handleScroll();
 
-  // Add scroll event listener to window
-  window.addEventListener('scroll', handleScroll);
+    // Add scroll event listener to window
+    window.addEventListener('scroll', handleScroll);
 
-  // Function to handle navigation link clicks
-  function handleNavLinkClick(event) {
-      const targetId = this.getAttribute('href').substring(1); // Get target ID from href
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-          event.preventDefault(); // Prevent default anchor behavior
-          const targetRect = targetElement.getBoundingClientRect(); // Get target element's position relative to viewport
-          let offset = targetRect.top + window.pageYOffset - navigation.clientHeight; // Calculate offset relative to document
-          if (!isNavigationFixed) {
-              offset -= navigation.clientHeight; // Adjust offset if navigation is static
-          }
-          window.scrollTo({ top: offset, behavior: 'smooth' });
-      }
-  }
+    // Function to handle navigation link clicks
+    function handleNavLinkClick(event) {
+        const targetId = this.getAttribute('href').substring(1); // Get target ID from href
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            event.preventDefault(); // Prevent default anchor behavior
+            const targetRect = targetElement.getBoundingClientRect(); // Get target element's position relative to viewport
+            let offset = targetRect.top + window.pageYOffset - navigation.clientHeight; // Calculate offset relative to document
+            if (!isNavigationFixed) {
+                offset -= navigation.clientHeight; // Adjust offset if navigation is static
+            }
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+    }
 
-  // Add click event listener to navigation links
-  document.querySelectorAll('nav ul li a').forEach(function(link) {
-      link.addEventListener('click', handleNavLinkClick);
-  });
+    // Add click event listener to navigation links
+    document.querySelectorAll('nav ul li a').forEach(function (link) {
+        link.addEventListener('click', handleNavLinkClick);
+    });
 
-  // Other navigation menu functionality
-  // If a link has a dropdown, add sub menu toggle
-  document.querySelectorAll('nav ul li a:not(:only-child)').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-          var dropdown = this.nextElementSibling;
-          if (dropdown) {
-              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-              // Close one dropdown when selecting another
-              document.querySelectorAll('.nav-dropdown').forEach(function(item) {
-                  if (item !== dropdown) {
-                      item.style.display = 'none';
-                  }
-              });
-              e.stopPropagation();
-          }
-      });
-  });
+    // Other navigation menu functionality
+    // If a link has a dropdown, add sub menu toggle
+    document.querySelectorAll('nav ul li a:not(:only-child)').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            var dropdown = this.nextElementSibling;
+            if (dropdown) {
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                // Close one dropdown when selecting another
+                document.querySelectorAll('.nav-dropdown').forEach(function (item) {
+                    if (item !== dropdown) {
+                        item.style.display = 'none';
+                    }
+                });
+                e.stopPropagation();
+            }
+        });
+    });
 
-  // Clicking away from dropdown will remove the dropdown class
-  document.addEventListener('click', function() {
-      document.querySelectorAll('.nav-dropdown').forEach(function(item) {
-          item.style.display = 'none';
-      });
-  });
+    // Clicking away from dropdown will remove the dropdown class
+    document.addEventListener('click', function () {
+        document.querySelectorAll('.nav-dropdown').forEach(function (item) {
+            item.style.display = 'none';
+        });
+    });
 
-  // Toggle open and close nav styles on click
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-      var navUl = document.querySelector('nav ul');
-      navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
-  });
+    // Toggle open and close nav styles on click
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+        var navUl = document.querySelector('nav ul');
+        navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
+    });
 
-  // Hamburger to X toggle
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-      this.classList.toggle('active');
-  });
+    // Hamburger to X toggle
+    document.getElementById('nav-toggle').addEventListener('click', function () {
+        this.classList.toggle('active');
+    });
 });
 
 
@@ -146,7 +146,7 @@ function updateCounter() {
         if (i === currentSlide) {
             dot.classList.add('active');
         }
-        dot.addEventListener('click', function() {
+        dot.addEventListener('click', function () {
             const index = parseInt(this.dataset.index);
             goToSlide(index);
         });
@@ -188,7 +188,7 @@ function displayBars(arr) {
         const bar = document.createElement("div");
         bar.classList.add("bar");
         bar.style.height = value * 5 + "px";
-        bar.innerHTML ='<h3>' + value + '</h3>';
+        bar.innerHTML = '<h3>' + value + '</h3>';
         barsContainer.appendChild(bar);
     });
 }

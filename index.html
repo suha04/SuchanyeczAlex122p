@@ -31,7 +31,7 @@
 
                     <li><a href="#alapelv">Alapelve</a></li>
                     <li><a href="#algoritmus">Algoritmus</a></li>
-                    <li><a href="#!">C# kód</a></li>
+                    <li><a href="#!"><span id="cskod">C# kód</span></a></li>
                     <li><a href="#!">Csoporttagok Oldalai</a>
                         <ul class="nav-dropdown">
                             <li><a href="#aoldal">"A" Oldal</a></li>
@@ -97,61 +97,97 @@
         <section class="mainSection" id="alapelv">
 
             <h1>A rendezés alapelve</h1>
-            
-            
+
+
             <div class="sectionContent">
 
-            <div>
-                
-                <p>
-                    A beillesztéses rendezés a tömb egyik részét a rendezett értékek, a másik részét pedig a még nem
-                    rendezett értékek tárolására használja fel. <br><br>
-                    A 2. elemtől kezdődően minden elemet összehasonlítunk az előzővel (vagy előzőekkel) addig, amíg van
-                    mivel összehasonlítani, és amíg az előző elem nagyobb az összehasonlítandó elemnél.<br><br>
-                    Ha az előző elem nagyobb, akkor felcserélődnek.
-                </p>
-
-            </div>
-
-            <div id="sort-container" class="sectionImg">
-                <div id="bars-container"></div>
                 <div>
-                    <button onclick="startSorting()" id="sort-button" class="button-5" role="button">Animáció
-                        indítása</button>
+
+                    <p>
+                        A beillesztéses rendezés a tömb egyik részét a rendezett értékek, a másik részét pedig a még nem
+                        rendezett értékek tárolására használja fel. <br><br>
+                        A 2. elemtől kezdődően minden elemet összehasonlítunk az előzővel (vagy előzőekkel) addig, amíg
+                        van
+                        mivel összehasonlítani, és amíg az előző elem nagyobb az összehasonlítandó elemnél.<br><br>
+                        Ha az előző elem nagyobb, akkor felcserélődnek.
+                    </p>
+
                 </div>
 
+                <div id="sort-container" class="sectionImg">
+                    <div id="bars-container"></div>
+                    <div>
+                        <button onclick="startSorting()" id="sort-button" class="button-5" role="button">Animáció
+                            indítása</button>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
         </section>
 
         <section class="mainSection" id="algoritmus">
-            
+
             <h1>Az Algoritmus</h1>
-             
+
             <div class="sectionContent">
 
-            
-            <div class="sectionImg">
-                <img src="assets/img/Csharp.png" alt="" srcset="">
+
+                <div class="sectionImg">
+                    <img src="assets/img/Csharp.png" alt="" srcset="">
+                </div>
+
+                <div>
+
+                    <p>
+                        Az alábbi képen egy 5 elemű tömb látható.
+                        <br>Felépítése:
+                    <ol>
+                        <li>Elem(ek) amit összehasonlítunk az előző elemmel (elemekkel).</li>
+                        <li>Amivel hasonlítunk, annak az indexe 1-el kisebb.</li>
+                        <li>Amíg van mivel összehasonlítani és az előző elem nagyobb az összehasonlítandó elemnél,</li>
+                        <li>Addig az összehasonlítandó elemet cseréljük az előző elemmel</li>
+                    </ol>
+                    </p>
+
+                </div>
             </div>
+        </section>
 
-            <div>
+        <!-- First Pop-up container -->
+        <div id="myModal1" class="modal">
+            <!-- Content inside the first pop-up -->
+            <div class="modal-content">
                 
-                <p>
-                    Az alábbi képen egy 5 elemű tömb látható.
-                    <br>Felépítése:
-                <ol>
-                    <li>Elem(ek) amit összehasonlítunk az előző elemmel (elemekkel).</li>
-                    <li>Amivel hasonlítunk, annak az indexe 1-el kisebb.</li>
-                    <li>Amíg van mivel összehasonlítani és az előző elem nagyobb az összehasonlítandó elemnél,</li>
-                    <li>Addig az összehasonlítandó elemet cseréljük az előző elemmel</li>
-                </ol>
-                </p>
+                <span class="close">&#10006;</span>
+                <!-- Add your content for Modal 1 here -->
+               
+               
+                <section class="mainSection modalSection">
 
+                    <h1>C# Kód</h1>
+        
+                    <div class="sectionContent" id="kodResz">
+        
+                        <H1>Input</H1>
+
+                        <div class="sectionImg">
+                            <a href="#!" id="masolas"></a>
+                            <div id="input"></div>
+                        </div>
+
+                        <H1>Output</H1>
+                        <div class="sectionImg">
+                            
+                           <div id="output"></div>
+        
+                        </div>
+                    </div>
+                </section>
+                <script src="assets/js/modal.js"></script>
             </div>
         </div>
-        </section>
+
     </main>
     <footer>
 

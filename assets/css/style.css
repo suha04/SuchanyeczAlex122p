@@ -6,6 +6,7 @@
     --regFont: "Poppins-Regular";
     --boldFont: "Poppins-Bold";
     --paddingAmount: 10rem;
+    --bodyFontSize: clamp(16px, 2.5vw, 25px);
 }
 
 *
@@ -23,7 +24,7 @@ body
   background-color: var(--maincolor);
   font-family: var(--regFont);
   height: 100vh;
-  font-size: clamp(16px, 2.5vw, 25px);
+  font-size: var(--bodyFontSize);
 }
 
 h1, h2, h3, h4, h5, h6
@@ -181,10 +182,25 @@ nav ul li a {
   padding-inline: 10px;
 }
 
-nav ul li a:hover {
+nav ul li a:hover:not(:has(#cskod)) {
   background: #f2f2f2;
   color: #fb5958;
 }
+
+#cskod
+{
+  background: #fb5958;
+  border-radius: 2rem;
+  padding: 10px;
+}
+
+#cskod:hover
+{
+  background: #f2f2f2;
+  color: #fb5958;
+}
+
+
 
 /* Dropdown styles */
 nav ul li a:not(:only-child):after {
@@ -215,6 +231,8 @@ nav ul li ul li a {
   padding: 15px;
   line-height: 20px;
 }
+
+
 
 /* Mobile navigation */
 .nav-mobile {
@@ -485,7 +503,130 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 
 
 
+/* Modal formázás */
 
+/* Styles for the pop-up containers */
+.modal {
+  display: none; /* Hide the pop-ups by default */
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  
+}
+
+/* Styles for the pop-up content */
+.modal-content {
+  background-color: var(--bgcolor);
+  padding: 2rem;
+  margin: 10% 10%;
+  border: 1px solid #888;
+  border-radius: 1rem;
+  border: none;
+  position: relative;
+}
+
+.modal-content h1
+{
+  text-align: center;
+}
+
+/* bezárás gomb */
+.close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  top: 0;
+  font-size: 2rem;
+  aspect-ratio: 1/1;
+  width: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--fontcolor);
+}
+
+/* Amikor a modal nyitva, nincs görgetés */
+body.modal-open {
+  overflow: hidden;
+  
+}
+
+#kodResz
+{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#kodResz .sectionImg
+{
+  width: 100%;
+ 
+}
+
+.modalSection
+{
+  padding: 0;
+  
+}
+
+.sectionImg:has(#input) {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#input {
+  position: relative;
+  white-space: pre-wrap;
+  
+}
+
+#output
+{
+  text-align: center;
+}
+
+#masolas
+{
+  background-color: grey;
+  border-bottom-left-radius: 2rem;
+  padding: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+@media(max-width: 800px) {
+  #input
+  {
+    text-align: left;
+  }
+
+  .modal-content {
+    background-color: var(--bgcolor);
+    padding: 1rem;
+    margin: 5% 5%;
+    border: 1px solid #888;
+    border-radius: 1rem;
+    border: none;
+    position: relative;
+  }
+}
+  
 
 /* Rendezés animáció */
 
