@@ -64,7 +64,7 @@ main {
 }
 
 
-.mainSection h3 {
+.mainSection h2 {
   font-size: calc(var(--bodyFontSize)*2);
   text-transform: uppercase;
   flex: none;
