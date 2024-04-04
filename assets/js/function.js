@@ -1,3 +1,9 @@
+// Get the computed value of the color variable
+const rootStyles = getComputedStyle(document.documentElement);
+const orange = rootStyles.getPropertyValue('--orange');
+
+
+
 //nav funkció
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -84,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.classList.toggle('active');
     });
 });
+
 
 
 //carousel funkciók
@@ -245,3 +252,36 @@ const minHeight = 10; // Minimum height of bars
 const maxHeight = 50; // Change this value to adjust maximum height of bars
 initialNumbers = generateRandomNumbers(numBars, minHeight, maxHeight);
 displayBars(initialNumbers);
+
+
+//Light és Dark mód
+
+const modeToggle = document.getElementById('mode-toggle');
+const body = document.body;
+
+modeToggle.addEventListener('change', () => {
+    if (modeToggle.checked) {
+        body.classList.add('darkmode');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.remove('darkmode');
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Check for user's preferred theme on page load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('darkmode');
+    modeToggle.checked = true;
+} else {
+    body.classList.remove('darkmode');
+    modeToggle.checked = false;
+}
+
+// Check for user's system preferences (dark mode or light mode)
+const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (prefersDarkMode && savedTheme !== 'light') {
+    body.classList.add('darkmode');
+    modeToggle.checked = true;
+}

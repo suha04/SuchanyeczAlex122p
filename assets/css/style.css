@@ -1,116 +1,108 @@
-:root
-{
-    --orange: #fb5958;
-    --dark2: #232323;
-    --dark1: #181818;
-    --light1: white;
-    --light2: grey;
-    --regFont: "Poppins-Regular";
-    --boldFont: "Poppins-Bold";
-    --paddingAmount: 10rem;
-    --bodyFontSize: clamp(16px, 2.5vw, 25px);
+:root {
+  --orange: #fb5958;
+  --dark2: #232323;
+  --dark1: #181818;
+  --light1: white;
+  --light2: rgb(224, 224, 224);
+  --regFont: "Poppins-Regular";
+  --boldFont: "Poppins-Bold";
+  --paddingAmount: 10rem;
+  --bodyFontSize: clamp(16px, 2.5vw, 25px);
 }
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
 
 
-body
-{
-  background-color: var(--dark1);
+body {
   font-family: var(--regFont);
   height: 100vh;
   font-size: var(--bodyFontSize);
 }
 
-h1, h2, h3, h4, h5, h6
-{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--boldFont);
+}
+
+h1
+{
+  color: var(--orange);
 }
 
 
 /* Main formázás*/
 
-main
-{
-    margin: var(--paddingAmount);
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
+main {
+  margin: var(--paddingAmount);
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }
 
-.mainSection 
-{
-  color: var(--light1);
-  
-  background-color: var(--dark2);
-
+.mainSection {
   border-radius: 10px;
   padding: 20px;
-  
+
 }
 
-.sectionContent
-{
-  
+.sectionContent {
+
   display: flex;
   gap: calc((var(--paddingAmount)/4));
   margin-block: calc(var(--paddingAmount) / 2);
-  
+
 }
 
 
-.mainSection h1
-{
+.mainSection h1 {
   font-size: 50px;
   text-transform: uppercase;
   flex: none;
 }
 
-.sectionImg
-{
+.sectionImg {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--dark1);
   padding: 20px;
   border-radius: 2rem;
 }
 
-.sectionImg img
-{
+.sectionImg img {
   width: 100%;
   border-radius: 10px;
 }
 
 @media (max-width: 800px) {
-  main
-  {
-    margin:0;
+  main {
+    margin: 0;
     text-align: center;
   }
 
-  .sectionContent
-  {
+  .sectionContent {
     flex-direction: column;
   }
 
-  .mainSection
-  {
+  .mainSection {
     border-radius: 0;
   }
 
 }
 
 ol {
-  padding: 20px; /* Adjust as needed */
+  padding: 20px;
+  /* Adjust as needed */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -120,25 +112,26 @@ ol {
 
 /* Fixed navigation */
 .navigation {
-  background: var(--dark2);
-  color: var(--light1);
+
   width: 100%;
   z-index: 100;
-  box-shadow: 1px 1px 100px 1px black;
+
 }
 
 nav {
-  
-  background-color: var(--dark2);
+
+
   width: 100%;
   display: flex;
   justify-content: center;
+  
+  
 }
 
 .nav-container {
   width: 100%;
   margin: 0 auto;
-  
+
 }
 
 .brand {
@@ -148,20 +141,15 @@ nav {
   line-height: 70px;
   text-transform: uppercase;
   text-decoration: none;
-  
+
 }
 
 
 
-.nav-list
-{
-  background-color: var(--dark2);
-}
 
-.navigation a
-{
+.navigation a {
   text-decoration: none;
-  color: var(--light1);
+  
 }
 
 nav ul {
@@ -182,26 +170,13 @@ nav ul li a {
   color: var(--light1);
   text-align: center;
   padding-inline: 10px;
-  
-}
-
-#navUnderline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 10px;
-  width: 100%;
-  height: 3px;
-  border-radius:  0rem 0rem 2rem 2rem;
-  background-color: var(--light1);
-  transform: scaleX(0);
  
-  transition: transform 0.3s ease-in-out;
-  
+
 }
 
-#navUnderline:focus::after {
-  transform: scaleX(1);
+nav ul li ul a
+{
+  border: 1px solid;
 }
 
 nav ul li a:hover:not(:has(#cskod)) {
@@ -209,15 +184,13 @@ nav ul li a:hover:not(:has(#cskod)) {
   color: var(--orange);
 }
 
-#cskod
-{
+#cskod {
   background: var(--orange);
   border-radius: 2rem;
   padding: 10px;
 }
 
-#cskod:hover
-{
+#cskod:hover {
   background: #f2f2f2;
   color: var(--orange);
 }
@@ -226,34 +199,39 @@ nav ul li a:hover:not(:has(#cskod)) {
 
 /* Dropdown styles */
 nav ul li a:not(:only-child):after {
-  content: ' ▾'; /* Unicode arrow */
+  content: ' ▾';
+  /* Unicode arrow */
 }
 
 nav ul li ul {
   position: absolute;
-  top: 100%; /* Position dropdown below parent */
+  top: 100%;
+  /* Position dropdown below parent */
   left: 0;
-  display: none; /* Hide dropdown by default */
+  display: none;
+  /* Hide dropdown by default */
   width: 100%;
-  background-color: var(--dark2); /* Background color for dropdown */
-  border: 1px solid #ccc; /* Border color for dropdown */
-  z-index: 1000; /* Ensure dropdown appears above other content */
+  /* Background color for dropdown */
+  
+  z-index: 1000;
+  /* Ensure dropdown appears above other content */
   text-align: center;
 }
 
-nav ul li:hover > ul {
-  display: block; /* Show dropdown when parent is hovered */
+nav ul li:hover>ul {
+  display: block;
+  /* Show dropdown when parent is hovered */
 }
 
 nav ul li ul li {
-  float: none; /* Reset float to stack dropdown items vertically */
+  float: none;
+  /* Reset float to stack dropdown items vertically */
 }
 
 nav ul li ul li a {
   padding: 15px;
   line-height: 20px;
 }
-
 
 
 /* Mobile navigation */
@@ -265,7 +243,8 @@ nav ul li ul li a {
 
 /* Hamburger menu styles */
 #nav-toggle {
-  display: none; /* Hide the hamburger menu by default */
+  display: none;
+  /* Hide the hamburger menu by default */
 }
 
 @media (max-width: 800px) {
@@ -302,18 +281,23 @@ nav ul li ul li a {
     left: 50%;
     width: 50%;
     transform: translateX(-50%);
-    text-align: center; /* Adjust text alignment if needed */
+    text-align: center;
+    /* Adjust text alignment if needed */
+    
   }
 
   .brand {
     position: relative;
-    padding-left: 20px; /* Reset padding */
-    margin: 0; /* Reset margin */
+    padding-left: 20px;
+    /* Reset padding */
+    margin: 0;
+    /* Reset margin */
     float: left;
   }
 
   .brand a {
-    padding-left: 0; /* Reset padding */
+    padding-left: 0;
+    /* Reset padding */
   }
 
   #nav-toggle {
@@ -323,7 +307,7 @@ nav ul li ul li a {
     top: 22px;
     cursor: pointer;
     padding: 10px 35px 16px 0px;
-    
+
   }
 
   #nav-toggle span,
@@ -333,7 +317,6 @@ nav ul li ul li a {
     border-radius: 1px;
     height: 4px;
     width: 35px;
-    background: var(--light1);
     position: absolute;
     display: block;
     content: '';
@@ -382,12 +365,19 @@ nav ul li ul li a {
 
 
 .carousel-container {
+  
   overflow: hidden;
   width: 100%;
-  height: 100%; /* Ensure the container fills the entire viewport */
+  height: 100%;
+  /* Ensure the container fills the entire viewport */
   position: relative;
   margin: auto;
-  
+
+}
+
+.carousel-container h1
+{
+  color: var(--light1);
 }
 
 
@@ -396,7 +386,7 @@ nav ul li ul li a {
   transition: transform 0.5s ease;
   width: 100%;
   min-height: 600px;
-  
+
 }
 
 .carousel-slide {
@@ -426,9 +416,12 @@ nav ul li ul li a {
 
 
 .carousel-slide:nth-child(3) {
-  background: #EB3349;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #F45C43, #EB3349);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #EB3349;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F45C43, #EB3349);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F45C43, #EB3349);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -445,8 +438,6 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 
 .carousel-text {
   text-align: left;
-  color: var(--light1);
- 
 }
 
 .carousel-slide-half h1 {
@@ -464,27 +455,24 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
 
 
 @media (max-width:800px) {
-  
-  .carousel-text
-  {
+
+  .carousel-text {
     text-align: center;
   }
-  
+
   .carousel-slide {
     flex-direction: column;
     padding: 0;
   }
 
-  .carousel-slide-half img
-  {
+  .carousel-slide-half img {
     width: 200px;
     margin: 0 auto auto;
   }
 
 }
 
-.carousel-controls
-{
+.carousel-controls {
   display: inline-flex;
   align-items: center;
   position: absolute;
@@ -492,42 +480,34 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
   left: 50%;
   transform: translateX(-50%);
   height: 100px;
-  
-  
+
+
 }
 
 .carousel-control {
   cursor: pointer;
   background: transparent;
-  color: var(--dark2);
   border: none;
   font-size: 50px;
-}
-
-.carousel-control:active
-{
-  color: var(--light1);
 }
 
 .carousel-dot {
   width: 10px;
   height: 10px;
-  background-color: var(--dark2);
+ 
   border-radius: 50%;
   display: inline-block;
   margin: 0 5px;
 }
 
-.carousel-dot.active {
-  background-color: var(--light1);
-}
 
 
 /* Modal formázás */
 
 /* Styles for the pop-up containers */
 .modal {
-  display: none; /* Hide the pop-ups by default */
+  display: none;
+  /* Hide the pop-ups by default */
   position: fixed;
   z-index: 100;
   left: 0;
@@ -537,23 +517,18 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  
 }
 
 /* Styles for the pop-up content */
 .modal-content {
-  background-color: var(--dark2);
   padding: 2rem;
   margin: 10% 10%;
-  border: 1px solid #888;
   border-radius: 1rem;
   border: none;
   position: relative;
 }
 
-.modal-content h1
-{
+.modal-content h1 {
   text-align: center;
 }
 
@@ -570,56 +545,48 @@ background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, F
   width: 50px;
   font-weight: bold;
   cursor: pointer;
-  color: var(--light1);
 }
 
 /* Amikor a modal nyitva, nincs görgetés */
 body.modal-open {
   overflow: hidden;
-  
+
 }
 
-#kodResz
-{
+#kodResz {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 0;
 }
 
-#kodResz .sectionImg
-{
+#kodResz .sectionImg {
   width: 100%;
- 
+
 }
 
-.modalSection
-{
+.modalSection {
   padding: 0;
-  
+
 }
 
 .sectionImg:has(#input) {
   width: 100%;
   overflow-x: auto;
-  
+
 }
 
 #input {
   position: relative;
   white-space: pre-wrap;
-  
+
 }
 
-#output
-{
+#output {
   text-align: center;
 }
 
-#masolas
-{
-  background-color: var(--light2);
+#masolas {
   border-bottom-left-radius: 2rem;
   padding: 20px;
   text-transform: uppercase;
@@ -630,60 +597,63 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--light1);
   z-index: 2;
+  background-color: var(--orange);
+  color: var(--light1);
 }
 
 @media(max-width: 800px) {
-  #input
-  {
+  #input {
     text-align: left;
   }
 
   .modal-content {
-    background-color: var(--dark2);
     padding: 1rem;
     margin: 5% 5%;
-    border: 1px solid #888;
     border-radius: 1rem;
     border: none;
-    position: relative;
   }
 }
-  
+
 
 /* Rendezés animáció */
 
 #sort-container {
-  
+
   justify-content: space-evenly;
   gap: 25px;
 }
+
 #bars-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-end; /* Align bars to the bottom of the container */
+  align-items: flex-end;
+  /* Align bars to the bottom of the container */
   width: 100%;
-  gap: 10px;
+  gap: 5px;
 }
+
 .bar {
-  background: #3498db;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #3498db, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #3498db, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 2px;
+  background: #3498db;
+  color: var(--light1);
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #3498db, #2c3e50);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #3498db, #2c3e50);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 10px 10px 0 0;
   text-align: center;
   width: 50px;
-  
+
 }
 
 @media (max-width: 800px) {
-  .mainSection
-  {
+  .mainSection {
     flex-direction: column;
   }
 
-  #bars-container
-  {
+  #bars-container {
     width: 100%;
   }
 }
@@ -736,16 +706,15 @@ body.modal-open {
 /* Footer formázás */
 
 footer {
-  background-color: var(--dark2);
+  
   margin-top: calc(var(--paddingAmount)/2);
   display: flex;
   flex-direction: column;
   padding-top: calc(var(--paddingAmount)/10);
-  color: var(--light1);
   gap: calc(var(--paddingAmount)/4);
 }
 
-#footerContent {
+.footerContent{
   flex-basis: 100%;
   flex-direction: column;
   justify-content: center;
@@ -768,7 +737,8 @@ footer {
 
 #copyrightText,
 #designerLink {
-  display: inline-block; /* Display as inline-block to allow them to be next to each other */
+  display: inline-block;
+  /* Display as inline-block to allow them to be next to each other */
 }
 
 #designer {
@@ -776,4 +746,268 @@ footer {
   text-decoration: none;
   font-weight: bold;
   color: var(--orange);
+}
+
+/* Mode gomb */
+
+
+
+/* Toggle Styles */
+.toggle-container {
+  display: inline-block;
+  scale: 1.2;
+  position: relative;
+  aspect-ratio: 6/3;
+  width: 60px;
+}
+
+.mode-toggle {
+  display: none;
+}
+
+.mode-label {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--light2);
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+
+.mode-toggle:checked + .mode-label {
+  background-color: var(--orange);
+}
+
+.mode-label:before {
+  content: '';
+  position: absolute;
+  aspect-ratio: 1;
+  width: 26px;
+  background-color: var(--light1);
+  border-radius: 50%;
+  transition: transform 0.4s;
+  top: 2px;
+  left: 2px;
+}
+
+.mode-toggle:checked + .mode-label:before {
+  transform: translateX(30px);
+}
+
+
+
+/* Dark mode */
+
+body.darkmode {
+  background-color: var(--dark1);
+  color: var(--light1);
+}
+
+
+body.darkmode .mainSection {
+  background-color: var(--dark2);
+}
+
+body.darkmode .sectionImg {
+  background-color: var(--dark1);
+}
+
+body.darkmode .navigation {
+  background: var(--dark2);
+  box-shadow: 1px 1px 100px 1px black;
+}
+
+body.darkmode #brandTitle
+{
+  color: var(--orange);
+}
+
+body.darkmode .navigation a
+{
+  color: var(--light1);
+}
+
+body.darkmode .nav-list {
+  background-color: transparent;
+}
+
+body.darkmode nav ul li ul
+{
+  background-color: var(--dark2);
+  
+}
+
+body.darkmode .nav-dropdown li
+{
+  border-color: var(--dark1);
+  /* Border color for dropdown */
+}
+
+
+body.darkmode #nav-toggle span,
+body.darkmode #nav-toggle span:before,
+body.darkmode #nav-toggle span:after {
+  background-color: var(--light1);
+}
+
+body.darkmode .carousel-control
+{
+  color: var(--dark1);
+}
+
+body.darkmode .carousel-control:active {
+  color: var(--light1);
+}
+
+body.darkmode .carousel-dot
+{
+  background-color: var(--dark1);
+}
+
+body.darkmode .carousel-dot.active {
+  background-color: var(--light1);
+}
+
+body.darkmode .modal
+{
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
+}
+
+body.darkmode #modalTitle
+{
+  color: var(--light1);
+}
+
+body.darkmode .modal-content
+{
+  background-color: var(--dark2);
+}
+
+body.darkmode .close
+{
+  color: var(--light1);
+}
+
+body.darkmode footer {
+  background-color: var(--dark2);
+  color: var(--light1);
+}
+
+body.darkmode #footerCopyright {
+  background-color: var(--dark1);
+}
+
+body.darkmode .mode-label:before
+{
+  background-color: var(--dark1);
+}
+
+/* Light mode */
+
+body {
+  background-color: var(--light2);
+  color: var(--dark1);
+}
+
+.mainSection {
+  background-color: var(--light1);
+}
+
+.sectionImg {
+  background-color: var(--light2);
+}
+
+.navigation {
+  background: var(--light1);
+  box-shadow: 1px 1px 100px 1px black;
+}
+
+#brandTitle
+{
+  color: var(--orange);
+}
+
+.navigation a
+{
+  color: var(--dark1);
+  border: 0;
+}
+
+.nav-list {
+  background-color: transparent;
+}
+
+nav ul li ul
+{
+  background-color: var(--light1);
+  /* Border color for dropdown */
+}
+
+.nav-dropdown li
+{
+  border: 1px solid var(--light2);
+}
+
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  background-color: var(--dark1);
+}
+
+.carousel-text
+{
+  color: var(--light1);
+}
+
+.carousel-control
+{
+  color: var(--light1);
+}
+
+.carousel-control:active {
+  color: var(--dark1);
+}
+
+.carousel-dot
+{
+  background-color: var(--light1);
+}
+
+.carousel-dot.active {
+  background-color: var(--dark1);
+}
+
+.modal
+{
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
+}
+
+#modalTitle
+{
+  color: var(--dark1);
+}
+
+.modal-content
+{
+  background-color: var(--light1);
+}
+
+.close
+{
+  color: var(--dark1);
+}
+
+footer {
+  background-color: var(--light1);
+  color: var(--dark1);
+}
+
+#footerCopyright {
+  background-color: var(--light2);
 }

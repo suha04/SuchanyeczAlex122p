@@ -181,10 +181,9 @@ document.addEventListener("DOMContentLoaded", function() {
   
       // Optionally, provide feedback to the user
       copyButton.textContent = 'Másolva!';
-      copyButton.style.backgroundColor ="Green";
       setTimeout(() => {
         copyButton.textContent = 'Másolás';
-        copyButton.style.backgroundColor ="Grey";
+        copyButton.style.backgroundColor =orange;
       }, 1500); // Reset button text after 1.5 seconds
     });
   });
