@@ -34,7 +34,7 @@ h6 {
   font-family: var(--boldFont);
 }
 
-h1
+h1, h2, h3
 {
   color: var(--orange);
 }
@@ -64,8 +64,8 @@ main {
 }
 
 
-.mainSection h1 {
-  font-size: 50px;
+.mainSection h3 {
+  font-size: calc(var(--bodyFontSize)*2);
   text-transform: uppercase;
   flex: none;
 }
@@ -108,7 +108,7 @@ ol {
   gap: 20px;
 }
 
-/* Navigation styles */
+/* Navigation formázás */
 
 /* Fixed navigation */
 .navigation {
@@ -179,7 +179,8 @@ nav ul li ul a
   border: 1px solid;
 }
 
-nav ul li a:hover:not(:has(#cskod)) {
+nav ul li a:hover:not(:has(#cskod)) 
+{
   background: #f2f2f2;
   color: var(--orange);
 }
@@ -375,9 +376,12 @@ nav ul li ul li a {
 
 }
 
-.carousel-container h1
+.carousel-container h2
 {
   color: var(--light1);
+  text-transform: uppercase;
+  padding-bottom: 50px;
+  font-size: calc(var(--bodyFontSize)*2.4);
 }
 
 
@@ -433,16 +437,11 @@ nav ul li ul li a {
   height: 100%;
   width: 100%;
   justify-content: center;
-  font-size: clamp(18px, 2vw, 30px);
+  font-size: calc(var(--bodyFontSize)*1.2);
 }
 
 .carousel-text {
   text-align: left;
-}
-
-.carousel-slide-half h1 {
-  text-transform: uppercase;
-  padding-bottom: 50px;
 }
 
 .carousel-slide-half img {
@@ -528,7 +527,7 @@ nav ul li ul li a {
   position: relative;
 }
 
-.modal-content h1 {
+.modal-content h2 {
   text-align: center;
 }
 
@@ -755,7 +754,7 @@ footer {
 /* Toggle Styles */
 .toggle-container {
   display: inline-block;
-  scale: 1.2;
+  transform: scale(1.2);
   position: relative;
   aspect-ratio: 6/3;
   width: 60px;
@@ -784,7 +783,7 @@ footer {
 .mode-label:before {
   content: '';
   position: absolute;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
   width: 26px;
   background-color: var(--light1);
   border-radius: 50%;
@@ -822,7 +821,7 @@ body.darkmode .navigation {
 
 body.darkmode #brandTitle
 {
-  color: var(--orange);
+  color: var(--light1);
 }
 
 body.darkmode .navigation a
@@ -846,12 +845,17 @@ body.darkmode .nav-dropdown li
   /* Border color for dropdown */
 }
 
-
 body.darkmode #nav-toggle span,
 body.darkmode #nav-toggle span:before,
 body.darkmode #nav-toggle span:after {
   background-color: var(--light1);
 }
+
+/* Additional CSS to hide the middle span in dark mode */
+body.darkmode #nav-toggle.active span {
+  background-color: transparent; /* Hide the middle span in dark mode */
+}
+
 
 body.darkmode .carousel-control
 {

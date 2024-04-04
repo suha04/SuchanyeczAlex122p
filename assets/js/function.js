@@ -2,15 +2,13 @@
 const rootStyles = getComputedStyle(document.documentElement);
 const orange = rootStyles.getPropertyValue('--orange');
 
-
-
-//nav funkció
+//nav function
 
 document.addEventListener('DOMContentLoaded', function () {
     const navigation = document.querySelector('.navigation');
     const navList = document.querySelector('.nav-list');
     const navToggle = document.getElementById('nav-toggle');
-    const navUnderline =document.getElementById('navUnderline');
+    const navUnderline = document.getElementById('navUnderline');
 
     let isNavigationFixed = false; // Flag to track whether navigation is fixed
 
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleNavLinkClick(event) {
         const targetId = this.getAttribute('href').substring(1); // Get target ID from href
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
             event.preventDefault(); // Prevent default anchor behavior
             const targetRect = targetElement.getBoundingClientRect(); // Get target element's position relative to viewport
@@ -44,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 offset -= navigation.clientHeight; // Adjust offset if navigation is static
             }
             window.scrollTo({ top: offset, behavior: 'smooth' });
-            
+
         }
-        
+
     }
 
     // Add click event listener to navigation links
@@ -93,15 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//carousel funkciók
+//carousel functions
 const carouselWrapper = document.querySelector('.carousel-wrapper');
 const slides = document.querySelectorAll('.carousel-slide');
 const totalSlides = slides.length;
 let currentSlide = 0;
 const slideWidth = slides[0].clientWidth;
+const touchThreshold = 50; // Adjust the threshold as needed
 let touchStartX = 0;
 let touchEndX = 0;
-const swipeThreshold = 50; // Adjust the threshold as needed
 let intervalId;
 
 function goToSlide(slideIndex) {
@@ -132,7 +130,7 @@ function handleTouchMove(event) {
 
 function handleTouchEnd() {
     const deltaX = touchEndX - touchStartX;
-    if (Math.abs(deltaX) > swipeThreshold) {
+    if (Math.abs(deltaX) > touchThreshold) {
         if (deltaX > 0) {
             prevSlide();
         } else {
@@ -179,7 +177,7 @@ function resetInterval() {
 intervalId = setInterval(nextSlide, 3000);
 
 
-// Rendezés funkció
+// Sorting function
 
 let initialNumbers = [];
 
@@ -200,7 +198,7 @@ function displayBars(arr) {
         const bar = document.createElement("div");
         bar.classList.add("bar");
         bar.style.height = value * 5 + "px";
-        bar.innerHTML = '<h3>' + value + '</h3>';
+        bar.innerHTML = '<h4>' + value + '</h4>';
         barsContainer.appendChild(bar);
     });
 }
@@ -247,14 +245,13 @@ function startSorting() {
 }
 
 // Initialize bars
-const numBars = 10; // Change this value for more or less bars
+const numBars = 10; // Change this value for more or fewer bars
 const minHeight = 10; // Minimum height of bars
 const maxHeight = 50; // Change this value to adjust maximum height of bars
 initialNumbers = generateRandomNumbers(numBars, minHeight, maxHeight);
 displayBars(initialNumbers);
 
-
-//Light és Dark mód
+// Light and Dark mode
 
 const modeToggle = document.getElementById('mode-toggle');
 const body = document.body;
@@ -269,7 +266,7 @@ modeToggle.addEventListener('change', () => {
     }
 });
 
-// Check for user's preferred theme on page load
+// Check for the user's preferred theme on page load
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     body.classList.add('darkmode');
@@ -279,7 +276,7 @@ if (savedTheme === 'dark') {
     modeToggle.checked = false;
 }
 
-// Check for user's system preferences (dark mode or light mode)
+// Check for the user's system preferences (dark mode or light mode)
 const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 if (prefersDarkMode && savedTheme !== 'light') {
     body.classList.add('darkmode');
