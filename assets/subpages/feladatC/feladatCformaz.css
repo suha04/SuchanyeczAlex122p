@@ -1,0 +1,30 @@
+html, body
+{
+    height: 100%;
+    width: 100%;
+    background-color: #222434;
+    color: whitesmoke;
+}
+main
+{
+    background-color: #1a1b26;
+}
+nav
+{
+    background-color: #222434;
+}
+a
+{
+    color: white;
+}
+
+section
+{
+    border: 5px solid white;
+    border-top: 0;
+    border-bottom: 0;
+}
+header
+{
+    border-bottom: 5px solid white;
+}

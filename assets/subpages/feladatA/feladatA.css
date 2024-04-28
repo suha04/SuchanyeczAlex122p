@@ -1,0 +1,97 @@
+body
+{
+    background-color: rgb(0, 63, 34);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #42cf89a4;
+}
+
+#cim
+{
+    font-size: 70px;
+}
+
+header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    height: 200px;
+    background-size: cover;
+}
+
+.navbar
+{
+    background-color: #42cf89a4;
+}
+
+h1
+{
+    text-align: center;
+    color: #42cf89;
+}
+
+a, a:active, a:hover
+{
+    text-decoration: none;
+    color: rgba(39, 99, 33, 0.849);
+}
+
+#rend h2
+{
+    color: #4ce79a;
+}
+
+#fajtak
+{
+    color: #54da97;
+}
+
+.ang
+{
+    font-style: italic;
+    color: #3eb97c;
+}
+
+#hatekonysag h3
+{
+    color: #42cf89;
+    text-align: center;
+}
+
+.kozep
+{
+    text-align: center;
+    margin-left: auto;
+    margin-right:0%;
+}
+
+.szines
+{
+    color: #42cf89;
+}
+
+#n
+{
+    font-size: 50px;
+    text-align: center;
+}
+
+.tip
+{
+    text-align: left;
+    height: 40px;
+}
+
+footer
+{
+    text-align: center;
+}
+
+#kod
+{
+    background-color:#3eb97c;
+    border-color: #0c2418;
+    font-size: 30px;
+    width: fit-content;
+}

@@ -1,0 +1,118 @@
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <script src="/assets/bootstrap/js/jquery-3.5.1.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="feladatA.css">
+    <title>Rendezési Algoritmusok</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1 id="cim">Rendezési Algoritmusok Összehasonlítása</h1>
+        </div>
+    </header>
+
+    <nav class="container navbar navbar-expand-lg navbar-light navbar">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a  class="nav-link" href="/index.html">B feladat</a>
+                <a  class="nav-link" href="../feladatC/feladatC.html">C feladat</a>
+                <a  class="nav-link" href="feladatAkod.html">Egyszerű Cserés Rendezés</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="col-12" id="rend">
+            <h2>Mit is jelent az hogy egy rendezési algoritmus összehasonlító?</h2>
+            <p>Azt hogy a rendezett elemek sorrendjét a többi kiinduló elem összehasonlításával határozza meg.</p>
+            <p>Ezek lehetnek primitívek, ami az algoritmus viszonylagos egyszerűségére utal.</p>
+            
+        </div>
+        <div class="col-12" id="fajtak">
+            <h3>Fajtái:</h3>
+            <ul>
+                <li>Egyszerű cserés rendezés / közvetlen kiválasztásos /<span class="ang">-swap</span></li>
+                <li>Beillesztéses rendezés / beszúrásos /<span class="ang">-insertion</span></li>
+                <li>Buborékos rendezés <span class="ang">-bubble</span></li>
+                <li>Minimum kiválasztásos rendezés <span class="ang">-selection</span></li>
+            </ul>
+        </div>
+        <div class="col-12" id="hatekonysag">
+            <table>
+                <tr>
+                    <td>
+                        <h3>Az egyes rendezési algoritmusok hatékonysága</h2>
+                        <div class="col-12">
+                            <table class="kozep">
+                                <tr>
+                                    <td class="tip"></td>
+                                    <td class="lep">Eleve rendezett lépésszám   </td>
+                                    <td class="ford">Eleve fordítottan rendezett lépésszám   </td>
+                                    <td class="ad">Adaptív?</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Egyszerű cserés</td>
+                                    <td class="lep">499 500</td>
+                                    <td class="ford">1 998 000</td>
+                                    <td class="ad">nem</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Beillesztéses</td>
+                                    <td class="lep">999</td>
+                                    <td class="ford">1 998 000</td>
+                                    <td class="ad">igen</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Javított beillesztéses  </td>
+                                    <td class="lep">2 997</td>
+                                    <td class="ford">1 000 998</td>
+                                    <td class="ad">igen</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Buborékos</td>
+                                    <td class="lep">499 500</td>
+                                    <td class="ford">1 998 000</td>
+                                    <td class="ad">nem</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Javított buborékos</td>
+                                    <td class="lep">999</td>
+                                    <td class="ford">1 998 000</td>
+                                    <td class="ad">igen</td>
+                                </tr>
+                                <tr>
+                                    <td class="tip">Min. kiválasztásos</td>
+                                    <td class="lep">499 500</td>
+                                    <td class="ford">502 497</td>
+                                    <td class="ad">nem</td>
+                                </tr>  
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-12">
+                            <p></p>
+                            <h3 class="szines">Ezen algoritmusok esetén az átlagos lépésszám (kb.):</h3>
+                            <p id="n"> n<sup>2</sup></p>
+                            <p class="szines kozep">1000 elem esetén -> 1 000 000 lépés</p>
+                            <p class="kozep">Ezeknél persze vannak hatékonyabb és rosszabb hatékanyságú akgoritmusok is</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p class="szines">Erre a gombra kattintva megnézhet egy példát az <i>egyszerű cserés rendezésre</i> C#-ban</p>
+        <button id="kod"><a target="_blank" href="feladatAkod.html">->-Kód-<-</a></button>
+    </footer>
+</body>
+</html>

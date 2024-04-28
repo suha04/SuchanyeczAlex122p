@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C feladat</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="feladatCformaz.css">
+</head>
+<body>
+    <nav class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 col-12">
+                <h2 class="text-end"><a href="../feladatA/feladatA.html">Feladat A.)</a></h2>
+            </div>
+            <div class="col-sm-4 col-12">
+                <h2 class="text-center"><a href="/index.html">Feladat B.)</a></h2>
+            </div>
+            <div class="col-sm-4 col-12">
+                <h2 class="text-start"><a href="feladatCkod.html">Feladat C.) kód</a></h2>
+            </div>
+        </div>
+    </nav>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10" >
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="row text-center">
+                            <h1 class="display-1">Javított beillesztéses rendezés</h1>
+                        </div>
+                        <div class="row">
+                            <h2>Újabb rendezési elvvel ismerkedünk meg. Az eddigi módszerek mindegyike olyan volt,
+                                hogy a sorozatot felosztotta egy már kész, rendezett szakaszra, és a rendezést a másik szakasz elemei között folytatta.
+                                Másik jellemzőjük volt, hogy a rendezés elkezdéséhez már az összes elemnek rendelkezésre kellett állnia.
+                                Most a kártyakeveréshez hasonló elvből indulunk ki: egyetlen elem mindig rendezett; ha van egy rendezett részsorozatunk,
+                                akkor abba a nagyság szerinti helyére illesszük be a soron következő elemet!</h2>
+                            <h2>Észrevehetjük az előző módszernél, hogy a beillesztő ciklusban a legtöbb elem egyszer mozdul el,
+                                a beillesztendő viszont sokszor. Ezt a sok mozgást is csökkenthetjük egyetlenegyre úgy,
+                                hogy a beillesztendőt nem tesszük azonnal be a sorozatba,
+                                hanem csak a többieket tologatjuk hátra, és a beillesztendőt csak a végén tesszük a helyére.</h2>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="row pb-5">
+                            <div class="col-12">
+                                <h2>Hagyományos Beillesztéses Rendezés</h2>
+                                <img class="img-fluid w-100" src="pseu1.png" alt="pseu1" title="pseu1">
+                            </div>
+                        </div>
+                        <div class="row pt-5">
+                            <div class="col-12">
+                                <h2>Javított Beillesztéses Rendezés</h2>
+                                <img class="img-fluid w-100" src="pseu2.png" alt="pseu1" title="pseu1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </main>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="feladatC.js"></script>
+</body>
+</html>
